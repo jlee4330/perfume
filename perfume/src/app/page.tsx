@@ -1,19 +1,17 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 export default function Home() {
-  const router = useRouter(); // useRouter 초기화
+  const router = useRouter();
 
-  // 다음 페이지로 이동하는 핸들러 함수
   const handleNext = () => {
-    router.push("/dataVis"); // 이동할 경로로 변경 가능
+    router.push("/dataVis");
   };
 
   return (
-    <div style={{ position: "relative", overflow: "hidden" }}>
-      {/* 비디오 백그라운드 */}
+    <div style={{ position: "relative", overflow: "hidden", fontFamily: "Arial, sans-serif" }}>
+      {/* Video Background */}
       <video
         autoPlay
         loop
@@ -27,7 +25,6 @@ export default function Home() {
           height: "100%",
           objectFit: "cover",
           zIndex: -1,
-          opacity: 1 // 투명도 조정
         }}
       >
         <source src="/background.mp4" type="video/mp4" />
@@ -39,12 +36,11 @@ export default function Home() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "rgba(240, 240, 240, 0.8)", // 영상 위로 살짝 반투명 배경 추가 가능
           padding: "20px",
           boxSizing: "border-box",
-          fontFamily: "Arial, sans-serif",
           position: "relative",
-          zIndex: 1
+          zIndex: 1,
+          backgroundColor: "rgba(240, 240, 240, 0.8)",
         }}
       >
         <div
@@ -53,159 +49,205 @@ export default function Home() {
             padding: "40px",
             borderRadius: "12px",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-            maxWidth: "800px",
+            maxWidth: "900px",
             width: "100%",
           }}
         >
-          {/* 헤더 섹션 */}
+          {/* Header */}
           <header style={{ textAlign: "center", marginBottom: "30px" }}>
-            <h1 style={{ fontSize: "2.5rem", margin: "0 0 10px 0" }}>
-              데이터 시각화 플랫폼
+            <h1
+              style={{
+                fontSize: "2.5rem",
+                margin: "0 0 10px 0",
+                color: "#333",
+                letterSpacing: "0.5px",
+              }}
+            >
+              Perfume Note Visualization
             </h1>
-            <p style={{ fontSize: "1.2rem", color: "#666" }}>
-              데이터를 이해하고 통찰을 얻는 가장 쉬운 방법
-            </p>
           </header>
 
-          {/* 소개 섹션 */}
-          <section style={{ textAlign: "center", marginBottom: "30px" }}>
-            <h2 style={{ fontSize: "2rem", marginBottom: "20px" }}>소개</h2>
-            <p
-              style={{
-                fontSize: "1rem",
-                maxWidth: "700px",
-                margin: "0 auto",
-                lineHeight: "1.6",
-                color: "#444",
-              }}
-            >
-              우리 플랫폼은 복잡한 데이터를 직관적이고 아름다운 시각화로 변환하여,
-              사용자들이 손쉽게 데이터를 분석하고 인사이트를 도출할 수 있도록 도와줍니다.
-              다양한 차트와 그래프를 제공하여 모든 종류의 데이터에 적합한
-              시각화 도구를 찾을 수 있습니다.
-            </p>
-          </section>
-
-          {/* 특징 섹션 */}
-          <section style={{ marginBottom: "30px" }}>
+          {/* Exploration Section */}
+          <section style={{ textAlign: "left", marginBottom: "30px" }}>
             <h2
               style={{
-                fontSize: "2rem",
-                textAlign: "center",
-                marginBottom: "30px",
+                fontSize: "1.5rem",
+                marginBottom: "20px",
                 color: "#333",
+                borderBottom: "1px solid #ddd", // Adjusted to match Legends
+                paddingBottom: "10px",
               }}
             >
-              주요 기능
+              Exploration
             </h2>
             <div
               style={{
                 display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
+                flexDirection: "column",
                 gap: "20px",
               }}
             >
-              {/* 기능 카드 예시 */}
               <div
                 style={{
-                  backgroundColor: "#fafafa",
+                  backgroundColor: "#fff",
                   padding: "20px",
                   borderRadius: "8px",
-                  width: "250px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-                onMouseOver={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(-5px)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-                }}
-                onMouseOut={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.05)";
+                  boxShadow: "0 4px 8px rgba(192, 192, 192, 0.5)",
                 }}
               >
-                <h3
-                  style={{
-                    fontSize: "1.5rem",
-                    marginBottom: "10px",
-                    color: "#0070f3",
-                  }}
-                >
-                  실시간 데이터 업데이트
-                </h3>
-                <p style={{ fontSize: "0.95rem", lineHeight: "1.5", color: "#555" }}>
-                  실시간으로 데이터를 업데이트하여 최신 정보를 기반으로 한 시각화를 제공합니다.
+                <strong>1. Relationship of Notes</strong>
+                <p style={{ margin: 0, color: "#555", lineHeight: "1.6" }}>
+                  Hover or click on a node to highlight the connected notes and observe which fragrance notes are frequently paired together.
                 </p>
               </div>
               <div
                 style={{
-                  backgroundColor: "#fafafa",
+                  backgroundColor: "#fff",
                   padding: "20px",
                   borderRadius: "8px",
-                  width: "250px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-                onMouseOver={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(-5px)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-                }}
-                onMouseOut={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.05)";
+                  boxShadow: "0 4px 8px rgba(192, 192, 192, 0.5)",
                 }}
               >
-                <h3
-                  style={{
-                    fontSize: "1.5rem",
-                    marginBottom: "10px",
-                    color: "#0070f3",
-                  }}
-                >
-                  다양한 차트 유형
-                </h3>
-                <p style={{ fontSize: "0.95rem", lineHeight: "1.5", color: "#555" }}>
-                  바 차트, 라인 차트, 파이 차트 등 다양한 차트 유형을 지원하여
-                  모든 데이터에 적합한 시각화를 구현할 수 있습니다.
+                <strong>2. Analyze Note Role</strong>
+                <p style={{ margin: 0, color: "#555", lineHeight: "1.6" }}>
+                  Explore how top, middle, and base notes are used by clicking on the respective layers in the fragrance pyramid. This allows you to focus on specific roles of the notes.
                 </p>
               </div>
               <div
                 style={{
-                  backgroundColor: "#fafafa",
+                  backgroundColor: "#fff",
                   padding: "20px",
                   borderRadius: "8px",
-                  width: "250px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-                  transition: "transform 0.2s, box-shadow 0.2s",
-                }}
-                onMouseOver={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(-5px)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-                }}
-                onMouseOut={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                  (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 8px rgba(0,0,0,0.05)";
+                  boxShadow: "0 4px 8px rgba(192, 192, 192, 0.5)",
                 }}
               >
-                <h3
-                  style={{
-                    fontSize: "1.5rem",
-                    marginBottom: "10px",
-                    color: "#0070f3",
-                  }}
-                >
-                  사용자 친화적 인터페이스
-                </h3>
-                <p style={{ fontSize: "0.95rem", lineHeight: "1.5", color: "#555" }}>
-                  직관적인 드래그 앤 드롭 인터페이스로 누구나 쉽게 데이터 시각화를 생성할 수 있습니다.
+                <strong>3. Brand Comparison</strong>
+                <p style={{ margin: 0, color: "#555", lineHeight: "1.6" }}>
+                  Compare how the top 6 perfume brands utilize notes differently, highlighting seasonal variations in their creations.
                 </p>
               </div>
-              {/* 추가 기능 카드를 여기에 추가할 수 있습니다 */}
             </div>
           </section>
 
-          {/* "다음으로" 버튼 섹션 */}
+          {/* Legends Section */}
+          <section style={{ textAlign: "left", marginBottom: "30px" }}>
+            <h3
+              style={{
+                fontSize: "1.2rem",
+                marginBottom: "20px",
+                color: "#333",
+                borderBottom: "1px solid #ddd",
+                paddingBottom: "10px",
+              }}
+            >
+              Legends
+            </h3>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                gap: "40px",
+              }}
+            >
+              {/* Node Colors */}
+              <div>
+                <strong>Node Colors</strong>
+                <ul style={{ display: "flex", gap: "15px", padding: 0, listStyle: "none" }}>
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        backgroundColor: "#F45DA6",
+                        marginRight: "5px",
+                      }}
+                    ></div>
+                    Spring
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        backgroundColor: "#7DC352",
+                        marginRight: "5px",
+                      }}
+                    ></div>
+                    Summer
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        backgroundColor: "#D2691E",
+                        marginRight: "5px",
+                      }}
+                    ></div>
+                    Autumn
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        borderRadius: "50%",
+                        backgroundColor: "#87CEEB",
+                        marginRight: "5px",
+                      }}
+                    ></div>
+                    Winter
+                  </li>
+                </ul>
+              </div>
+
+              {/* Link Thickness */}
+              <div>
+                <strong>Note Pairing</strong>
+                <ul style={{ display: "flex", gap: "15px", padding: 0, listStyle: "none" }}>
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: "50px",
+                        height: "2px",
+                        backgroundColor: "#666",
+                        marginRight: "5px",
+                      }}
+                    ></div>
+                    Few
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: "50px",
+                        height: "8px",
+                        backgroundColor: "#666",
+                        marginRight: "5px",
+                      }}
+                    ></div>
+                    Common
+                  </li>
+                  <li style={{ display: "flex", alignItems: "center" }}>
+                    <div
+                      style={{
+                        width: "50px",
+                        height: "12px",
+                        backgroundColor: "#666",
+                        marginRight: "5px",
+                      }}
+                    ></div>
+                    Frequent
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* "Next" Button */}
           <section style={{ textAlign: "center", marginBottom: "20px" }}>
             <button
               onClick={handleNext}
@@ -230,11 +272,11 @@ export default function Home() {
                 (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
               }}
             >
-              다음으로
+              Next
             </button>
           </section>
 
-          {/* 푸터 섹션 */}
+          {/* Footer */}
           <footer style={{ textAlign: "center" }}>
             <p style={{ fontSize: "0.9rem", color: "#999" }}>
               Copyright © Suyoun Lee

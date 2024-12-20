@@ -102,7 +102,7 @@ const brandThresholds: Record<string, number> = {
   chanel: 23,
   dior: 22,
   "yves-saint-laurent": 21,
-  "tom-ford": 10,
+  "tom-ford": 8,
   "jo-malone-london": 5,
   gucci: 11,
   default: 20,
